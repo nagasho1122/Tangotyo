@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.view.setPadding
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -12,10 +13,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var apple: Word = Word(R.drawable.apple1,"りんご","apple")
-        var banana: Word = Word(R.drawable.banana,"バナナ","banana")
-        var strawberry: Word = Word(R.drawable.strawberry,"いちご","strawberry")
-        var orange: Word = Word(R.drawable.orange,"オレンジ","orange")
+        var apple: CustomWord = CustomWord(R.drawable.apple1,"りんご","apple")
+        var banana: CustomWord = CustomWord(R.drawable.banana,"バナナ","banana")
+        var strawberry: CustomWord = CustomWord(R.drawable.strawberry,"いちご","strawberry")
+        var orange: CustomWord = CustomWord(R.drawable.orange,"オレンジ","orange")
 
         addWord(apple)
         addWord(banana)
@@ -25,10 +26,12 @@ class MainActivity : AppCompatActivity() {
 
         //container.addView(nameTextView)
     }
-    private fun addWord(word: Word){
+    private fun addWord(word: CustomWord){
         var nameTextView = TextView(applicationContext)
+        var englishTextView = TextView(applicationContext)
 
         nameTextView.text =word.name
+        englishTextView.text=word.englishname
 
         val layout = LinearLayout(this.applicationContext)
 
@@ -40,8 +43,11 @@ class MainActivity : AppCompatActivity() {
 
         imageView.setScaleType(ImageView.ScaleType.FIT_CENTER)
 
+        nameTextView.setPadding(10)
+
         layout.addView(imageView)
         layout.addView(nameTextView)
+        layout.addView(englishTextView)
 
         container.addView(layout)
     }
