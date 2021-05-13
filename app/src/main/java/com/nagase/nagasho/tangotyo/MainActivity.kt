@@ -12,16 +12,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         var apple: CustomWord = CustomWord(R.drawable.apple1,"りんご","apple")
         var banana: CustomWord = CustomWord(R.drawable.banana,"バナナ","banana")
         var strawberry: CustomWord = CustomWord(R.drawable.strawberry,"いちご","strawberry")
         var orange: CustomWord = CustomWord(R.drawable.orange,"オレンジ","orange")
 
-        addWord(apple)
-        addWord(banana)
-        addWord(orange)
-        addWord(strawberry)
+        val fruits = arrayOf(apple,banana,strawberry,orange)
+
+        for (fruit in fruits) {
+            addWord(fruit)
+        }
 
 
         //container.addView(nameTextView)
